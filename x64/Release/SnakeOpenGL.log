@@ -1,0 +1,19 @@
+﻿  Source.c
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(384,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(384,33): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(385,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(385,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(386,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(386,45): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(387,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(387,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(412,47): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(450,53): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(488,64): warning C4244: функция: преобразование "int" в "float", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(537,54): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(541,51): warning C4090: "функция": разные квалификаторы "const"
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 21 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  SnakeOpenGL.vcxproj -> D:\Soft\Visual Studio\source\repos\SnakeOpenGL\x64\Release\SnakeOpenGL.exe

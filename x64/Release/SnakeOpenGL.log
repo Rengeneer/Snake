@@ -1,17 +1,17 @@
 ﻿  Source.c
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(667,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(667,33): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(668,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(668,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(669,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(669,45): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(670,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(670,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(695,47): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(733,53): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(771,64): warning C4244: функция: преобразование "int" в "float", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(831,54): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(835,51): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(723,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(723,33): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(724,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(724,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(725,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(725,45): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(726,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(726,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(751,47): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(789,53): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(827,64): warning C4244: функция: преобразование "int" в "float", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(887,54): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(891,51): warning C4090: "функция": разные квалификаторы "const"
   Создание кода
   1 of 30 functions ( 3.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation

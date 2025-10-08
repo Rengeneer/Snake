@@ -1,20 +1,6 @@
-﻿  Source.c
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(960,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(960,33): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(961,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(961,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(962,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(962,45): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(963,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(963,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(988,47): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1026,53): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1064,64): warning C4244: функция: преобразование "int" в "float", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1124,54): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1128,51): warning C4090: "функция": разные квалификаторы "const"
-  Создание кода
+﻿  Создание кода
   8 of 30 functions (26.7%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   SnakeOpenGL.vcxproj -> D:\Soft\Visual Studio\source\repos\SnakeOpenGL\x64\Release\SnakeOpenGL.exe

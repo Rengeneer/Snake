@@ -1,20 +1,18 @@
 ﻿  Source.c
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(723,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(723,33): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(724,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(724,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(725,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(725,45): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(726,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(726,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(751,47): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(789,53): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(827,64): warning C4244: функция: преобразование "int" в "float", возможна потеря данных
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(887,54): warning C4090: "функция": разные квалификаторы "const"
-D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(891,51): warning C4090: "функция": разные квалификаторы "const"
-  Создание кода
-  1 of 30 functions ( 3.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Создание кода завершено
-  SnakeOpenGL.vcxproj -> D:\Soft\Visual Studio\source\repos\SnakeOpenGL\x64\Release\SnakeOpenGL.exe
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(307,5): warning C4013: initNodes: нет определения; предполагается "extern" с возвратом типа "int"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(310,31): warning C4013: heuristic: нет определения; предполагается "extern" с возвратом типа "int"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(347,18): warning C4013: isValidNode: нет определения; предполагается "extern" с возвратом типа "int"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(609,6): error C2371: initNodes: переопределение; различные базовые типы
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1169,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1169,33): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1170,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1170,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1171,24): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1171,45): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1172,18): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1172,39): warning C4244: функция: преобразование "int" в "GLfloat", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1197,47): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1235,53): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1273,64): warning C4244: функция: преобразование "int" в "float", возможна потеря данных
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1333,54): warning C4090: "функция": разные квалификаторы "const"
+D:\Soft\Visual Studio\source\repos\SnakeOpenGL\SnakeOpenGL\Source.c(1337,51): warning C4090: "функция": разные квалификаторы "const"

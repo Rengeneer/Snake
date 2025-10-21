@@ -15,19 +15,22 @@
 #define WALL_THICKNESS 1
 #define MAX_SNAKE_LENGTH 500
 #define MAX_WALLS 200
-#define SIMULATION_DEPTH 4
+#define SIMULATION_DEPTH 3
 #define BONUS_LIFETIME 100
+
+// Структура для хранения координат сегмента змейки
 
 typedef struct {
     int x;
     int y;
 } Segment;
+// Структура для хранения данных бонуса
 
 typedef struct {
     int x;
     int y;
     int type;
-    int lifetime; // Время жизни в ходах вместо времени
+    int lifetime;
 } Bonus;
 
 enum Direction { UP, DOWN, LEFT, RIGHT, NONE };
@@ -47,7 +50,7 @@ int wallsCount = 0;
 int foodEaten = 0;
 
 Bonus currentBonus = { -1, -1, -1, 0 };
-int multiplierCount = 0; // Количество оставшихся яблок с множителем
+int multiplierCount = 0;
 int multiplierActive = 0;
 
 enum GameState gameState = MENU;
@@ -58,13 +61,19 @@ const int fieldMaxX = (WIDTH / CELL_SIZE) - WALL_THICKNESS - 1;
 const int fieldMinY = WALL_THICKNESS;
 const int fieldMaxY = (HEIGHT / CELL_SIZE) - WALL_THICKNESS - 1;
 
-// Bot-related variables and functions
+
 int botEnabled = 1;
 int panicMode = 0;
 
-// Hunger system variables
+
 int hungerCounter = 0;
 float currentHungerPenalty = 0.0f;
+
+double start_time = -1.;
+double gameover_time = -1.;
+double update_count = 0.;
+double avg_fps = 0.;
+// Структура для хранения узла для поиска пути A*
 
 typedef struct {
     int x, y;
@@ -72,11 +81,11 @@ typedef struct {
     int parentX, parentY;
 } Node;
 
-Node nodes[40][30]; // Grid for pathfinding
+Node nodes[40][30];
 int closedList[40][30];
 int openList[40][30];
+// Структура для хранения состояния симуляции бота
 
-// Simulation structures
 typedef struct {
     Segment snake[MAX_SNAKE_LENGTH];
     int snakeLength;
@@ -87,31 +96,34 @@ typedef struct {
     int walls[MAX_WALLS][2];
     int wallsCount;
 } SimulationState;
+// Функция обновляет штраф за голод для змейки
 
-// Hunger system functions
+
 void updateHungerPenalty() {
     if (snake[0].x == foodX && snake[0].y == foodY) {
-        // Reset hunger when eating food
+
         hungerCounter = 0;
         currentHungerPenalty = 0.0f;
     }
     else {
-        // Increase hunger each move
+
         hungerCounter++;
-        // Penalty increases non-linearly - slowly at first, then faster
+
         currentHungerPenalty = hungerCounter * hungerCounter * 0.1f;
 
-        // Maximum penalty to not override safety
+
         if (currentHungerPenalty > 50.0f) {
             currentHungerPenalty = 50.0f;
         }
     }
 }
+// Функция эвристики для алгоритма A*
 
-// Pathfinding functions
+
 int heuristic(int x1, int y1, int x2, int y2) {
     return abs(x1 - x2) + abs(y1 - y2);
 }
+// Функция инициализации узлов для алгоритма A*
 
 void initNodes() {
     for (int x = fieldMinX; x <= fieldMaxX; x++) {
@@ -128,12 +140,14 @@ void initNodes() {
         }
     }
 }
+// Проверяет, находится ли узел в пределах игрового поля
 
 int isValidNode(int x, int y) {
     return x >= fieldMinX && x <= fieldMaxX && y >= fieldMinY && y <= fieldMaxY;
 }
+// Находит путь от старта к цели с помощью алгоритма A*
 
-// Improved pathfinding that considers walls
+
 int findPath(int startX, int startY, int targetX, int targetY) {
     if (!isPositionValid(targetX, targetY)) return 0;
 
@@ -150,7 +164,7 @@ int findPath(int startX, int startY, int targetX, int targetY) {
         int minF = INT_MAX;
         int currentX = -1, currentY = -1;
 
-        // Find node with lowest F score
+
         for (int x = fieldMinX; x <= fieldMaxX; x++) {
             for (int y = fieldMinY; y <= fieldMaxY; y++) {
                 if (openList[x][y] && nodes[x][y].f < minF) {
@@ -200,17 +214,19 @@ int findPath(int startX, int startY, int targetX, int targetY) {
 
     return found;
 }
+// Вычисляет реальное расстояние с учётом стен и препятствий
 
-// Calculate actual distance considering walls
+
 int calculateActualDistance(int startX, int startY, int targetX, int targetY) {
     if (!findPath(startX, startY, targetX, targetY)) {
-        return 1000; // Large penalty if no path exists
+        return 1000;
     }
 
     return nodes[targetX][targetY].g;
 }
+// Проверяет, можно ли переместиться в указанную клетку
 
-// Core game functions
+
 int isPositionValid(int x, int y) {
     if (x < fieldMinX || x > fieldMaxX || y < fieldMinY || y > fieldMaxY)
         return 0;
@@ -222,6 +238,7 @@ int isPositionValid(int x, int y) {
             return 0;
     return 1;
 }
+// Проверяет допустимость позиции в режиме симуляции
 
 int isPositionValidInSimulation(SimulationState* state, int x, int y) {
     if (x < fieldMinX || x > fieldMaxX || y < fieldMinY || y > fieldMaxY)
@@ -234,16 +251,17 @@ int isPositionValidInSimulation(SimulationState* state, int x, int y) {
             return 0;
     return 1;
 }
+// Копирует текущее состояние игры в структуру симуляции
 
 void copyGameStateToSimulation(SimulationState* sim) {
-    // Copy snake
+
     for (int i = 0; i < snakeLength; i++) {
         sim->snake[i].x = snake[i].x;
         sim->snake[i].y = snake[i].y;
     }
     sim->snakeLength = snakeLength;
 
-    // Copy food and bonus
+
     sim->foodX = foodX;
     sim->foodY = foodY;
     sim->bonus.x = currentBonus.x;
@@ -251,17 +269,18 @@ void copyGameStateToSimulation(SimulationState* sim) {
     sim->bonus.type = currentBonus.type;
     sim->bonus.lifetime = currentBonus.lifetime;
 
-    // Copy walls
+
     for (int i = 0; i < wallsCount; i++) {
         sim->walls[i][0] = walls[i][0];
         sim->walls[i][1] = walls[i][1];
     }
     sim->wallsCount = wallsCount;
 
-    // Copy game state
+
     sim->score = score;
     sim->multiplierCount = multiplierCount;
 }
+// Выполняет один ход в симуляции
 
 int makeMoveInSimulation(SimulationState* state, enum Direction moveDir) {
     if (state->snakeLength <= 0) return 0;
@@ -275,37 +294,38 @@ int makeMoveInSimulation(SimulationState* state, enum Direction moveDir) {
     case NONE: return 0;
     }
 
-    // Check collision
+
     if (!isPositionValidInSimulation(state, newHead.x, newHead.y))
         return 0;
 
-    // Move snake
+
     for (int i = state->snakeLength - 1; i > 0; i--) {
         state->snake[i] = state->snake[i - 1];
     }
     state->snake[0] = newHead;
 
-    // Check food consumption
+
     if (newHead.x == state->foodX && newHead.y == state->foodY) {
         if (state->snakeLength < MAX_SNAKE_LENGTH) {
             state->snakeLength++;
             state->snake[state->snakeLength - 1] = state->snake[state->snakeLength - 2];
         }
 
-        // Generate new food in simulation
+
         do {
             state->foodX = fieldMinX + rand() % (fieldMaxX - fieldMinX + 1);
             state->foodY = fieldMinY + rand() % (fieldMaxY - fieldMinY + 1);
         } while (!isPositionValidInSimulation(state, state->foodX, state->foodY));
     }
 
-    // Check bonus consumption
+
     if (state->bonus.type != -1 && newHead.x == state->bonus.x && newHead.y == state->bonus.y) {
-        state->bonus.type = -1; // Bonus collected
+        state->bonus.type = -1;
     }
 
     return 1;
 }
+// Вычисляет количество доступных клеток в симуляции
 
 int calculateFreeSpaceInSimulation(SimulationState* state) {
     int visited[40][30] = { 0 };
@@ -347,8 +367,9 @@ int calculateFreeSpaceInSimulation(SimulationState* state) {
 
     return count;
 }
+// Оценивает состояние симуляции по нескольким критериям
 
-// Improved evaluation function with actual distance calculation and bonus priority
+
 float evaluateSimulationState(SimulationState* state) {
     if (state->snakeLength <= 0) return -10000.0f;
 
@@ -356,36 +377,36 @@ float evaluateSimulationState(SimulationState* state) {
     int headX = state->snake[0].x;
     int headY = state->snake[0].y;
 
-    // Calculate actual distances considering walls
+
     int foodDist = calculateActualDistance(headX, headY, state->foodX, state->foodY);
     int bonusDist = (state->bonus.type != -1) ?
         calculateActualDistance(headX, headY, state->bonus.x, state->bonus.y) : 1000;
 
-    // Bonus for eating food
+
     if (headX == state->foodX && headY == state->foodY) {
         score += 300.0f;
     }
 
-    // Distance to food - main factor
+
     score -= foodDist * 2.0f;
 
-    // HIGH PRIORITY FOR BONUSES
+
     if (state->bonus.type != -1) {
-        // Very high bonus for collecting bonus
+
         if (headX == state->bonus.x && headY == state->bonus.y) {
-            score += 1000.0f; // Much higher than food
+            score += 1000.0f;
         }
 
-        // Distance to bonus - higher priority than food
+
         score -= bonusDist * 1.5f;
 
-        // Extra incentive for nearby bonuses
+
         if (bonusDist < 5) {
             score += (5 - bonusDist) * 10.0f;
         }
     }
 
-    // Safety evaluation
+
     int safeMoves = 0;
     int dx[] = { 0, 1, 0, -1 };
     int dy[] = { -1, 0, 1, 0 };
@@ -398,74 +419,75 @@ float evaluateSimulationState(SimulationState* state) {
         }
     }
 
-    // Penalty for dangerous positions
+
     float safetyMultiplier = 1.0f;
     if (safeMoves == 0) {
-        score -= 1000.0f; // Смерть всё так же страшна
+        score -= 1000.0f;
         safetyMultiplier = 0.1f;
     }
     else if (safeMoves == 1) {
-        score -= 30.0f; // Значительно уменьшаем штраф за 1 безопасный ход
+        score -= 30.0f;
         safetyMultiplier = 0.5f;
     }
     else if (safeMoves == 2) {
-        score -= 5.0f;  // Немного штрафуем за 2 хода
+        score -= 5.0f;
         safetyMultiplier = 0.8f;
     }
     else {
-        score += safeMoves * 2.0f; // Поощряем открытые пространства
+        score += safeMoves * 2.0f;
         safetyMultiplier = 1.0f;
     }
 
-    // Hunger penalty adjusted by safety level
+
     float adjustedHungerPenalty = currentHungerPenalty * safetyMultiplier;
     score -= adjustedHungerPenalty;
 
-    // Free space - moderate importance
+
     int freeSpace = calculateFreeSpaceInSimulation(state);
     score += freeSpace * 0.1f;
 
-    // Snake length - small bonus
+
     score += state->snakeLength * 1.0f;
 
     return score;
 }
+// Рекурсивно симулирует игру для оценки возможных ходов
 
-// Simulation function with fixed depth
+
 float simulateGame(SimulationState* state, enum Direction firstMove, int depth) {
-    // Base case: if simulation depth is reached, evaluate the final state.
+
     if (depth <= 0) {
         return evaluateSimulationState(state);
     }
 
     SimulationState currentState = *state;
-    float moveScore = 0.0f; // This will hold the immediate bonus for eating.
+    float moveScore = 0.0f;
 
-    // Make the first move for this simulation step.
+
     if (!makeMoveInSimulation(&currentState, firstMove)) {
-        return -10000.0f; // Return a very low score if the move is fatal.
+        return -10000.0f;
     }
 
-    // Check if the move resulted in eating food and add a bonus.
-    // CRITICAL CHANGE: We add to moveScore but DO NOT return.
+
+
     if (currentState.snake[0].x == foodX &&
         currentState.snake[0].y == foodY) {
         moveScore += 500.0f;
     }
 
-    // Check if the move resulted in eating a bonus and add a larger bonus.
+
     if (currentState.bonus.type != -1 &&
         currentState.snake[0].x == currentState.bonus.x &&
         currentState.snake[0].y == currentState.bonus.y) {
         moveScore += 1500.0f;
     }
 
-    // If this was the last step in the simulation, return the evaluation plus any bonus.
+
     if (depth <= 1) {
         return moveScore + evaluateSimulationState(&currentState);
     }
 
-    // --- Recursive Simulation Part ---
+
     float bestFutureScore = -10000.0f;
     enum Direction directions[] = { UP, RIGHT, DOWN, LEFT };
     int headX = currentState.snake[0].x;
@@ -481,9 +503,9 @@ float simulateGame(SimulationState* state, enum Direction firstMove, int depth) 
         case NONE: continue;
         }
 
-        // Check if the next potential move is valid
+
         if (isPositionValidInSimulation(&currentState, nx, ny)) {
-            // Recursively call simulateGame for the next depth level
+
             float score = simulateGame(&currentState, directions[i], depth - 1);
             if (score > bestFutureScore) {
                 bestFutureScore = score;
@@ -491,21 +513,22 @@ float simulateGame(SimulationState* state, enum Direction firstMove, int depth) 
         }
     }
 
-    // If no future moves were possible, evaluate the current state.
-    // Otherwise, return the combined score.
+
+
     if (bestFutureScore <= -10000.0f) {
         return moveScore + evaluateSimulationState(&currentState);
     }
 
-    // The final score for this path is the immediate bonus + the best score from future moves.
+
     return moveScore + bestFutureScore;
 }
+// Управляет ботом с использованием симуляции состояний
 
-// Improved bot with hunger system and bonus priority
+
 void botControlWithSimulation() {
     if (gameOver || !botEnabled) return;
 
-    // Update hunger penalty
+
     updateHungerPenalty();
 
     SimulationState baseState;
@@ -515,7 +538,7 @@ void botControlWithSimulation() {
     enum Direction bestDir = NONE;
     enum Direction directions[] = { UP, RIGHT, DOWN, LEFT };
 
-    // PRIORITY 1: Check moves that lead directly to a bonus
+
     if (currentBonus.type != -1) {
         for (int i = 0; i < 4; i++) {
             Segment testHead = baseState.snake[0];
@@ -527,17 +550,17 @@ void botControlWithSimulation() {
             case NONE: continue;
             }
 
-            // If this move leads directly to the bonus and is safe - choose it immediately!
+
             if (testHead.x == currentBonus.x && testHead.y == currentBonus.y) {
                 if (isPositionValidInSimulation(&baseState, testHead.x, testHead.y)) {
                     pendingDir = directions[i];
-                    return; // Exit function, we have the best move
+                    return;
                 }
             }
         }
     }
 
-    // PRIORITY 2: Check moves that lead directly to food
+
     for (int i = 0; i < 4; i++) {
         Segment testHead = baseState.snake[0];
         switch (directions[i]) {
@@ -548,16 +571,16 @@ void botControlWithSimulation() {
         case NONE: continue;
         }
 
-        // If this move leads directly to food and is safe - choose it immediately!
+
         if (testHead.x == foodX && testHead.y == foodY) {
             if (isPositionValidInSimulation(&baseState, testHead.x, testHead.y)) {
                 pendingDir = directions[i];
-                return; // Exit function, we have the best move
+                return;
             }
         }
     }
 
-    // PRIORITY 3: Main simulation with fixed depth (if no immediate food/bonus)
+
     int simulationDepth = SIMULATION_DEPTH;
 
     for (int i = 0; i < 4; i++) {
@@ -576,7 +599,7 @@ void botControlWithSimulation() {
 
         float score = simulateGame(&baseState, directions[i], simulationDepth);
 
-        // Small bonus for continuing in the same direction
+
         if (directions[i] == dir) {
             score += 3.0f;
         }
@@ -592,7 +615,7 @@ void botControlWithSimulation() {
         return;
     }
 
-    // Fallback: any safe move
+
     int headX = snake[0].x;
     int headY = snake[0].y;
     enum Direction safeDirs[] = { UP, RIGHT, DOWN, LEFT };
@@ -613,11 +636,13 @@ void botControlWithSimulation() {
         }
     }
 }
+// Вызывает функцию управления ботом
 
-// Keep original bot control but call our new simulation-based one
+
 void botControl() {
     botControlWithSimulation();
 }
+// Вычисляет количество свободных клеток на поле
 
 int calculateFreeSpace() {
     int visited[40][30] = { 0 };
@@ -655,80 +680,14 @@ int calculateFreeSpace() {
 
     return count;
 }
-
-int shouldPanic() {
-    int totalCells = (fieldMaxX - fieldMinX + 1) * (fieldMaxY - fieldMinY + 1);
-    int freeSpace = calculateFreeSpace();
-    float percentage = (float)freeSpace / totalCells;
-
-    return percentage < 0.8f;
-}
-
-enum Direction getFirstMove(int startX, int startY, int targetX, int targetY) {
-    if (!findPath(startX, startY, targetX, targetY)) return NONE;
-
-    // Trace back to find first move
-    int currentX = targetX, currentY = targetY;
-
-    while (!(nodes[currentX][currentY].parentX == startX &&
-        nodes[currentX][currentY].parentY == startY)) {
-        int parentX = nodes[currentX][currentY].parentX;
-        int parentY = nodes[currentX][currentY].parentY;
-
-        if (parentX == -1 || parentY == -1) return NONE;
-
-        currentX = parentX;
-        currentY = parentY;
-    }
-
-    if (currentX == startX && currentY == startY - 1) return UP;
-    if (currentX == startX && currentY == startY + 1) return DOWN;
-    if (currentX == startX - 1 && currentY == startY) return LEFT;
-    if (currentX == startX + 1 && currentY == startY) return RIGHT;
-
-    return NONE;
-}
-
-void findSafeDirection() {
-    int headX = snake[0].x;
-    int headY = snake[0].y;
-
-    int dx[] = { 0, 1, 0, -1 };
-    int dy[] = { -1, 0, 1, 0 };
-    enum Direction dirs[] = { UP, RIGHT, DOWN, LEFT };
-
-    // For longer snakes, find direction with most free space
-    int bestDir = NONE;
-    int maxSpace = -1;
-
-    for (int i = 0; i < 4; i++) {
-        int newX = headX + dx[i];
-        int newY = headY + dy[i];
-
-        if (isPositionValid(newX, newY)) {
-            // Temporarily move head to check space
-            Segment tempHead = snake[0];
-            snake[0].x = newX;
-            snake[0].y = newY;
-
-            int space = calculateFreeSpace();
-
-            if (space > maxSpace) {
-                maxSpace = space;
-                bestDir = dirs[i];
-            }
-
-            // Restore head position
-            snake[0] = tempHead;
-        }
-    }
-
-    if (bestDir != NONE) {
-        pendingDir = bestDir;
-    }
-}
+// Инициализирует игру и загружает уровень
 
 void initGame(int level) {
+    start_time = glfwGetTime();
+    avg_fps = 0;
+
+    update_count = 0;
+
     for (int i = 0; i < MAX_SNAKE_LENGTH; i++) {
         snake[i].x = 0;
         snake[i].y = 0;
@@ -746,7 +705,7 @@ void initGame(int level) {
     multiplierCount = 0;
     panicMode = 0;
 
-    // Reset hunger system
+
     hungerCounter = 0;
     currentHungerPenalty = 0.0f;
 
@@ -824,6 +783,7 @@ void initGame(int level) {
         foodY = fieldMinY + rand() % (fieldMaxY - fieldMinY + 1);
     } while (!isPositionValid(foodX, foodY));
 }
+// Создаёт новый бонус на поле
 
 int generateBonus() {
     int valid;
@@ -835,7 +795,7 @@ int generateBonus() {
         currentBonus.x = fieldMinX + rand() % (fieldMaxX - fieldMinX + 1);
         currentBonus.y = fieldMinY + rand() % (fieldMaxY - fieldMinY + 1);
         currentBonus.type = rand() % 3;
-        currentBonus.lifetime = BONUS_LIFETIME; // 100 ходов вместо времени
+        currentBonus.lifetime = BONUS_LIFETIME;
 
         if (!isPositionValid(currentBonus.x, currentBonus.y)) valid = 0;
         if (currentBonus.x == foodX && currentBonus.y == foodY) valid = 0;
@@ -854,13 +814,27 @@ int generateBonus() {
 
     return 1;
 }
+// Устанавливает состояние Game Over и вычисляет FPS
+
+void set_gameover() {
+    gameOver = 1;
+    gameover_time = glfwGetTime();
+    if (gameover_time > start_time) {
+        avg_fps = update_count / (gameover_time - start_time);
+    }
+    else {
+        avg_fps = 0;
+    }
+    return;
+}
+// Применяет эффект выбранного бонуса
 
 void applyBonusEffect(int type) {
     switch (type) {
-    case 0: // Yellow - x2 points for next 5 apples
+    case 0:
         multiplierCount = 5;
         break;
-    case 1: // Pink - remove 3 tail segments
+    case 1:
     {
         int newLength = snakeLength > 3 ? snakeLength - 3 : 1;
         for (int i = newLength; i < snakeLength; i++) {
@@ -870,7 +844,7 @@ void applyBonusEffect(int type) {
         snakeLength = newLength;
     }
     break;
-    case 2: // Blue - +5 points +2 segments
+    case 2:
         score += 5;
         if (snakeLength + 2 <= MAX_SNAKE_LENGTH) {
             Segment last = snake[snakeLength - 1];
@@ -884,6 +858,7 @@ void applyBonusEffect(int type) {
         break;
     }
 }
+// Обрабатывает ввод с клавиатуры
 
 void processInput(GLFWwindow* window) {
     static int iKeyPressed = 0;
@@ -919,7 +894,7 @@ void processInput(GLFWwindow* window) {
         }
     }
     else if (gameState == PLAYING) {
-        // Toggle bot with B key
+
         if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS && !bKeyPressed) {
             botEnabled = !botEnabled;
             bKeyPressed = 1;
@@ -946,7 +921,7 @@ void processInput(GLFWwindow* window) {
             return;
         }
 
-        // Manual controls (only if bot is disabled)
+
         if (!botEnabled) {
             if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS && dir != DOWN)
                 pendingDir = UP;
@@ -967,11 +942,12 @@ void processInput(GLFWwindow* window) {
         }
     }
 }
+// Обновляет состояние игры на каждом шаге
 
 void updateGame() {
     if (gameOver || gameState != PLAYING) return;
 
-    // Bot control
+
     if (botEnabled) {
         botControl();
     }
@@ -990,18 +966,18 @@ void updateGame() {
     }
 
     if (!isPositionValid(newHead.x, newHead.y)) {
-        gameOver = 1;
+        set_gameover();
         return;
     }
     for (int i = 0; i < wallsCount; i++) {
         if (newHead.x == walls[i][0] && newHead.y == walls[i][1]) {
-            gameOver = 1;
+            set_gameover();
             return;
         }
     }
     for (int i = 0; i < snakeLength; i++) {
         if (newHead.x == snake[i].x && newHead.y == snake[i].y) {
-            gameOver = 1;
+            set_gameover();
             return;
         }
     }
@@ -1012,7 +988,7 @@ void updateGame() {
     snake[0] = newHead;
 
     if (newHead.x == foodX && newHead.y == foodY) {
-        // Apply multiplier if active
+
         if (multiplierCount > 0) {
             score += 2;
             multiplierCount--;
@@ -1028,7 +1004,7 @@ void updateGame() {
 
         foodEaten++;
 
-        // Spawn bonus every 5 apples
+
         if (foodEaten >= 5 && currentBonus.type == -1) {
             if (generateBonus()) {
                 foodEaten = 0;
@@ -1053,7 +1029,7 @@ void updateGame() {
         currentBonus.type = -1;
     }
 
-    // Update bonus lifetime
+
     if (currentBonus.type != -1) {
         currentBonus.lifetime--;
         if (currentBonus.lifetime <= 0) {
@@ -1061,9 +1037,10 @@ void updateGame() {
         }
     }
 
-    // Update hunger counter (after snake movement)
+
     updateHungerPenalty();
 }
+// Рисует квадратную ячейку на экране
 
 void drawSquare(int x, int y) {
     glBegin(GL_QUADS);
@@ -1073,6 +1050,7 @@ void drawSquare(int x, int y) {
     glVertex2f(x * CELL_SIZE, (y + 1) * CELL_SIZE);
     glEnd();
 }
+// Рисует стены игрового поля
 
 void drawWalls() {
     glColor3f(0.7f, 0.7f, 0.7f);
@@ -1091,6 +1069,7 @@ void drawWalls() {
     for (int i = 0; i < wallsCount; i++)
         drawSquare(walls[i][0], walls[i][1]);
 }
+// Выводит текст на экран
 
 void renderText(const char* text, float x, float y, float scale) {
     static GLfloat vertices[4096];
@@ -1106,6 +1085,7 @@ void renderText(const char* text, float x, float y, float scale) {
     glDrawArrays(GL_QUADS, 0, num_quads * 4);
     glDisableClientState(GL_VERTEX_ARRAY);
 }
+// Отображает главное меню игры
 
 void drawMenu() {
     glColor3f(0.0f, 0.0f, 0.0f);
@@ -1141,6 +1121,7 @@ void drawMenu() {
 
     renderText("Press I for info", 20, HEIGHT - 40, 2.0f);
 }
+// Отображает экран с информацией о бонусах
 
 void drawInfo() {
     glColor3f(0.0f, 0.0f, 0.0f);
@@ -1176,6 +1157,7 @@ void drawInfo() {
 
     renderText("Press I to return", WIDTH - 220, HEIGHT - 40, 2.0f);
 }
+// Основная функция отрисовки текущего состояния
 
 void render() {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -1197,7 +1179,7 @@ void render() {
             }
             drawSquare(currentBonus.x, currentBonus.y);
 
-            // Display bonus lifetime
+
             char bonusText[32];
             sprintf(bonusText, "%d", currentBonus.lifetime);
             renderText(bonusText, currentBonus.x * CELL_SIZE + 5, currentBonus.y * CELL_SIZE + 5, 2.0f);
@@ -1208,14 +1190,14 @@ void render() {
             sprintf(scoreText, "Score: %d", score);
             renderText(scoreText, 25, 30, 4.0f);
 
-            // Display multiplier status
+
             if (multiplierCount > 0) {
                 char multiplierText[32];
                 sprintf(multiplierText, "x2: %d", multiplierCount);
                 renderText(multiplierText, 25, 100, 3.0f);
             }
 
-            // Display bot status
+
             if (botEnabled) {
                 renderText("Bot: ON", WIDTH - 150, 30, 3.0f);
                 if (panicMode) {
@@ -1237,7 +1219,7 @@ void render() {
             glEnd();
 
             char gameOverText[64];
-            sprintf(gameOverText, "Game Over! Score: %d", score);
+            sprintf(gameOverText, "Game Over! Score: %d, FPS: %f", score, avg_fps);
             float textWidth = stb_easy_font_width(gameOverText) * 4.0f;
             float textHeight = 50.0f;
             renderText(gameOverText, (WIDTH - textWidth) / 2, (HEIGHT - textHeight) / 2 - 60, 4.0f);
@@ -1258,9 +1240,10 @@ void render() {
         drawInfo();
     }
 }
+// Основная функция программы
 
 int main() {
-    srand((unsigned int)time(NULL));  //    
+    srand((unsigned int)time(NULL));
 
     if (!glfwInit()) return -1;
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Snake Game with Improved Bot", NULL, NULL);
@@ -1282,6 +1265,7 @@ int main() {
 
         if (currentTime - lastUpdateTime >= UPDATE_INTERVAL && gameState == PLAYING) {
             updateGame();
+            update_count += 1;
             lastUpdateTime = currentTime;
         }
 

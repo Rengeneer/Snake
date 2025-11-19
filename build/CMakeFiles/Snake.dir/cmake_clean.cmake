@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Snake.dir/link.d"
   "CMakeFiles/Snake.dir/src/Source.c.o"
   "CMakeFiles/Snake.dir/src/Source.c.o.d"
+  "CMakeFiles/Snake.dir/src/errors/err.c.o"
+  "CMakeFiles/Snake.dir/src/errors/err.c.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

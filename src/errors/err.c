@@ -1,13 +1,15 @@
 #include "err.h"
-
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 
 #ifdef __linux__
 	#include <execinfo.h>
 	#include <signal.h>
+	#include <unistd.h>
 #elif _WIN32
 	#include <windows.h>
+	#include <dbghelp.h>
 #endif
 
 static void _print_bt(void)

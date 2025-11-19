@@ -154,6 +154,30 @@ src/Source.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/Source.c.s
 .PHONY : src/Source.c.s
 
+src/errors/err.o: src/errors/err.c.o
+.PHONY : src/errors/err.o
+
+# target to build an object file
+src/errors/err.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/errors/err.c.o
+.PHONY : src/errors/err.c.o
+
+src/errors/err.i: src/errors/err.c.i
+.PHONY : src/errors/err.i
+
+# target to preprocess a source file
+src/errors/err.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/errors/err.c.i
+.PHONY : src/errors/err.c.i
+
+src/errors/err.s: src/errors/err.c.s
+.PHONY : src/errors/err.s
+
+# target to generate assembly for a file
+src/errors/err.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/errors/err.c.s
+.PHONY : src/errors/err.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -166,6 +190,9 @@ help:
 	@echo "... src/Source.o"
 	@echo "... src/Source.i"
 	@echo "... src/Source.s"
+	@echo "... src/errors/err.o"
+	@echo "... src/errors/err.i"
+	@echo "... src/errors/err.s"
 .PHONY : help
 
 

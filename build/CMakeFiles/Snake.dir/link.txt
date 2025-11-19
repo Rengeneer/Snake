@@ -1,0 +1,1 @@
+/usr/lib64/ccache/cc -Wl,--dependency-file=CMakeFiles/Snake.dir/link.d CMakeFiles/Snake.dir/src/Source.c.o -o /home/caduceus/Projects/snake/Snake/bin/Snake  /usr/lib64/libglfw.so.3.4 -lm /usr/lib64/libGLX.so /usr/lib64/libOpenGL.so

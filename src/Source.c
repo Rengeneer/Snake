@@ -3,49 +3,38 @@
 #include "stb_easy_font.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <GLFW/glfw3.h>     
+#include <GLFW/glfw3.h>    
 #include <time.h>
 #include <math.h>
 #include <limits.h>
 
-#define WIDTH 800
-#define HEIGHT 600
-#define CELL_SIZE 20 
-#define UPDATE_INTERVAL 0.00000000000015
-#define WALL_THICKNESS 1
-#define MAX_SNAKE_LENGTH 500
-#define MAX_WALLS 200
-#define SIMULATION_DEPTH 3
-#define BONUS_LIFETIME 100
+#include "Source.h"
 
-// Структура для хранения координат сегмента змейки
 
-typedef struct {
-    int x;
-    int y;
-} Segment;
-// Структура для хранения данных бонуса
-
-typedef struct {
-    int x;
-    int y;
-    int type;
-    int lifetime;
-} Bonus;
-
-enum Direction { UP, DOWN, LEFT, RIGHT, NONE };
-enum GameState { MENU, PLAYING, INFO };
+	/* ---------------- *
+	|					|
+	|	   GLOBAL		|
+	|					|
+	* ----------------- */
 
 Segment snake[MAX_SNAKE_LENGTH];
-int snakeLength = 1;
+
 enum Direction dir = RIGHT;
 enum Direction pendingDir = NONE;
+
+const int fieldMinX = WALL_THICKNESS;
+const int fieldMaxX = (WIDTH / CELL_SIZE) - WALL_THICKNESS - 1;
+const int fieldMinY = WALL_THICKNESS;
+const int fieldMaxY = (HEIGHT / CELL_SIZE) - WALL_THICKNESS - 1;
+
+int walls[MAX_WALLS][2];
+int snakeLength = 1;
 
 int foodX, foodY;
 
 int gameOver = 0;
 int score = 0;
-int walls[MAX_WALLS][2];
+
 int wallsCount = 0;
 int foodEaten = 0;
 
@@ -56,15 +45,8 @@ int multiplierActive = 0;
 enum GameState gameState = MENU;
 int currentLevel = 1;
 
-const int fieldMinX = WALL_THICKNESS;
-const int fieldMaxX = (WIDTH / CELL_SIZE) - WALL_THICKNESS - 1;
-const int fieldMinY = WALL_THICKNESS;
-const int fieldMaxY = (HEIGHT / CELL_SIZE) - WALL_THICKNESS - 1;
-
-
 int botEnabled = 1;
 int panicMode = 0;
-
 
 int hungerCounter = 0;
 float currentHungerPenalty = 0.0f;
@@ -73,33 +55,28 @@ double start_time = -1.;
 double gameover_time = -1.;
 double update_count = 0.;
 double avg_fps = 0.;
-// Структура для хранения узла для поиска пути A*
-
-typedef struct {
-    int x, y;
-    int f, g, h;
-    int parentX, parentY;
-} Node;
 
 Node nodes[40][30];
 int closedList[40][30];
 int openList[40][30];
-// Структура для хранения состояния симуляции бота
 
-typedef struct {
-    Segment snake[MAX_SNAKE_LENGTH];
-    int snakeLength;
-    int foodX, foodY;
-    Bonus bonus;
-    int score;
-    int multiplierCount;
-    int walls[MAX_WALLS][2];
-    int wallsCount;
-} SimulationState;
-// Функция обновляет штраф за голод для змейки
+   /* ----------------- *
+	|					|
+	|	 DECLARATION	|
+	|					|
+	* ----------------- */
 
+int isValidNode(int x, int y);
+int isPositionValid(int x, int y);
+int isPositionValidInSimulation(SimulationState* state, int x, int y);
 
-void updateHungerPenalty() {
+   /* ----------------- *
+	|					|
+	|	   LOGIC		|
+	|					|
+	* ----------------- */
+
+void updateHungerPenalty() {										/*	Функция обновляет штраф за голод для змейки	*/
     if (snake[0].x == foodX && snake[0].y == foodY) {
 
         hungerCounter = 0;
@@ -117,15 +94,12 @@ void updateHungerPenalty() {
         }
     }
 }
-// Функция эвристики для алгоритма A*
 
-
-int heuristic(int x1, int y1, int x2, int y2) {
+int heuristic(int x1, int y1, int x2, int y2) {						/*	Функция эвристики для алгоритма A*	*/
     return abs(x1 - x2) + abs(y1 - y2);
 }
-// Функция инициализации узлов для алгоритма A*
 
-void initNodes() {
+void initNodes() {													/*	Функция инициализации узлов для алгоритма A*	*/
     for (int x = fieldMinX; x <= fieldMaxX; x++) {
         for (int y = fieldMinY; y <= fieldMaxY; y++) {
             nodes[x][y].x = x;
@@ -140,15 +114,13 @@ void initNodes() {
         }
     }
 }
-// Проверяет, находится ли узел в пределах игрового поля
 
-int isValidNode(int x, int y) {
+int isValidNode(int x, int y) 											/*	Проверяет, находится ли узел в пределах игрового поля	*/
+{													
     return x >= fieldMinX && x <= fieldMaxX && y >= fieldMinY && y <= fieldMaxY;
 }
-// Находит путь от старта к цели с помощью алгоритма A*
 
-
-int findPath(int startX, int startY, int targetX, int targetY) {
+int findPath(int startX, int startY, int targetX, int targetY) {		/*	Находит путь от старта к цели с помощью алгоритма A*	*/
     if (!isPositionValid(targetX, targetY)) return 0;
 
     initNodes();
@@ -214,20 +186,16 @@ int findPath(int startX, int startY, int targetX, int targetY) {
 
     return found;
 }
-// Вычисляет реальное расстояние с учётом стен и препятствий
 
-
-int calculateActualDistance(int startX, int startY, int targetX, int targetY) {
+int calculateActualDistance(int startX, int startY, int targetX, int targetY) {			/*	Вычисляет реальное расстояние с учётом стен и препятствий	*/
     if (!findPath(startX, startY, targetX, targetY)) {
         return 1000;
     }
 
     return nodes[targetX][targetY].g;
 }
-// Проверяет, можно ли переместиться в указанную клетку
 
-
-int isPositionValid(int x, int y) {
+int isPositionValid(int x, int y) {														/*	Проверяет, можно ли переместиться в указанную клетку	*/
     if (x < fieldMinX || x > fieldMaxX || y < fieldMinY || y > fieldMaxY)
         return 0;
     for (int i = 0; i < wallsCount; i++)
@@ -238,9 +206,8 @@ int isPositionValid(int x, int y) {
             return 0;
     return 1;
 }
-// Проверяет допустимость позиции в режиме симуляции
 
-int isPositionValidInSimulation(SimulationState* state, int x, int y) {
+int isPositionValidInSimulation(SimulationState* state, int x, int y) {					/*	Проверяет допустимость позиции в режиме симуляции	*/
     if (x < fieldMinX || x > fieldMaxX || y < fieldMinY || y > fieldMaxY)
         return 0;
     for (int i = 0; i < state->wallsCount; i++)
@@ -251,9 +218,8 @@ int isPositionValidInSimulation(SimulationState* state, int x, int y) {
             return 0;
     return 1;
 }
-// Копирует текущее состояние игры в структуру симуляции
 
-void copyGameStateToSimulation(SimulationState* sim) {
+void copyGameStateToSimulation(SimulationState* sim) {								/*	Копирует текущее состояние игры в структуру симуляции	*/
 
     for (int i = 0; i < snakeLength; i++) {
         sim->snake[i].x = snake[i].x;
@@ -280,9 +246,8 @@ void copyGameStateToSimulation(SimulationState* sim) {
     sim->score = score;
     sim->multiplierCount = multiplierCount;
 }
-// Выполняет один ход в симуляции
 
-int makeMoveInSimulation(SimulationState* state, enum Direction moveDir) {
+int makeMoveInSimulation(SimulationState* state, enum Direction moveDir) {			/*	Выполняет один ход в симуляции	*/
     if (state->snakeLength <= 0) return 0;
 
     Segment newHead = state->snake[0];
@@ -325,9 +290,8 @@ int makeMoveInSimulation(SimulationState* state, enum Direction moveDir) {
 
     return 1;
 }
-// Вычисляет количество доступных клеток в симуляции
 
-int calculateFreeSpaceInSimulation(SimulationState* state) {
+int calculateFreeSpaceInSimulation(SimulationState* state) {				/*	Вычисляет количество доступных клеток в симуляции	*/
     int visited[40][30] = { 0 };
     int queue[1200][2];
     int front = 0, rear = 0;
@@ -367,10 +331,8 @@ int calculateFreeSpaceInSimulation(SimulationState* state) {
 
     return count;
 }
-// Оценивает состояние симуляции по нескольким критериям
 
-
-float evaluateSimulationState(SimulationState* state) {
+float evaluateSimulationState(SimulationState* state) {					/*	Оценивает состояние симуляции по нескольким критериям	*/
     if (state->snakeLength <= 0) return -10000.0f;
 
     float score = 0.0f;
@@ -451,10 +413,8 @@ float evaluateSimulationState(SimulationState* state) {
 
     return score;
 }
-// Рекурсивно симулирует игру для оценки возможных ходов
 
-
-float simulateGame(SimulationState* state, enum Direction firstMove, int depth) {
+float simulateGame(SimulationState* state, enum Direction firstMove, int depth) {				/*	Рекурсивно симулирует игру для оценки возможных ходов	*/
 
     if (depth <= 0) {
         return evaluateSimulationState(state);
@@ -522,10 +482,8 @@ float simulateGame(SimulationState* state, enum Direction firstMove, int depth) 
 
     return moveScore + bestFutureScore;
 }
-// Управляет ботом с использованием симуляции состояний
 
-
-void botControlWithSimulation() {
+void botControlWithSimulation() {					/*	Управляет ботом с использованием симуляции состояний	*/
     if (gameOver || !botEnabled) return;
 
 
@@ -636,15 +594,12 @@ void botControlWithSimulation() {
         }
     }
 }
-// Вызывает функцию управления ботом
 
-
-void botControl() {
+void botControl() {					/*	Вызывает функцию управления ботом	*/
     botControlWithSimulation();
 }
-// Вычисляет количество свободных клеток на поле
 
-int calculateFreeSpace() {
+int calculateFreeSpace() {			/*	Вычисляет количество свободных клеток на поле	*/
     int visited[40][30] = { 0 };
     int queue[1200][2];
     int front = 0, rear = 0;
@@ -680,9 +635,8 @@ int calculateFreeSpace() {
 
     return count;
 }
-// Инициализирует игру и загружает уровень
 
-void initGame(int level) {
+void initGame(int level) {				/*	Инициализирует игру и загружает уровень	*/
     start_time = glfwGetTime();
     avg_fps = 0;
 
@@ -783,9 +737,8 @@ void initGame(int level) {
         foodY = fieldMinY + rand() % (fieldMaxY - fieldMinY + 1);
     } while (!isPositionValid(foodX, foodY));
 }
-// Создаёт новый бонус на поле
 
-int generateBonus() {
+int generateBonus() {				/*	Создаёт новый бонус на поле	*/
     int valid;
     int attempts = 0;
     const int max_attempts = 1000;
@@ -814,9 +767,8 @@ int generateBonus() {
 
     return 1;
 }
-// Устанавливает состояние Game Over и вычисляет FPS
 
-void set_gameover() {
+void set_gameover() {				/*	Устанавливает состояние Game Over и вычисляет FPS	*/
     gameOver = 1;
     gameover_time = glfwGetTime();
     if (gameover_time > start_time) {
@@ -827,9 +779,8 @@ void set_gameover() {
     }
     return;
 }
-// Применяет эффект выбранного бонуса
 
-void applyBonusEffect(int type) {
+void applyBonusEffect(int type) {		/*	Применяет эффект выбранного бонуса	*/
     switch (type) {
     case 0:
         multiplierCount = 5;
@@ -858,9 +809,8 @@ void applyBonusEffect(int type) {
         break;
     }
 }
-// Обрабатывает ввод с клавиатуры
 
-void processInput(GLFWwindow* window) {
+void processInput(GLFWwindow* window) {				/*	Обрабатывает ввод с клавиатуры	*/
     static int iKeyPressed = 0;
     static int rKeyPressed = 0;
     static int eKeyPressed = 0;
@@ -942,9 +892,8 @@ void processInput(GLFWwindow* window) {
         }
     }
 }
-// Обновляет состояние игры на каждом шаге
 
-void updateGame() {
+void updateGame() {				/*	Обновляет состояние игры на каждом шаге	*/
     if (gameOver || gameState != PLAYING) return;
 
 
@@ -1040,9 +989,8 @@ void updateGame() {
 
     updateHungerPenalty();
 }
-// Рисует квадратную ячейку на экране
 
-void drawSquare(int x, int y) {
+void drawSquare(int x, int y) {		/*	Рисует квадратную ячейку на экране	*/
     glBegin(GL_QUADS);
     glVertex2f(x * CELL_SIZE, y * CELL_SIZE);
     glVertex2f((x + 1) * CELL_SIZE, y * CELL_SIZE);
@@ -1050,9 +998,8 @@ void drawSquare(int x, int y) {
     glVertex2f(x * CELL_SIZE, (y + 1) * CELL_SIZE);
     glEnd();
 }
-// Рисует стены игрового поля
 
-void drawWalls() {
+void drawWalls() {					/*	Рисует стены игрового поля	*/
     glColor3f(0.7f, 0.7f, 0.7f);
     for (int x = 0; x < WALL_THICKNESS; x++) {
         for (int y = 0; y < HEIGHT / CELL_SIZE; y++) {
@@ -1069,9 +1016,8 @@ void drawWalls() {
     for (int i = 0; i < wallsCount; i++)
         drawSquare(walls[i][0], walls[i][1]);
 }
-// Выводит текст на экран
 
-void renderText(const char* text, float x, float y, float scale) {
+void renderText(const char* text, float x, float y, float scale) {				/*	Выводит текст на экран	*/
     static GLfloat vertices[4096];
     unsigned char color[] = { 255, 255, 255, 255 };
     int num_quads = stb_easy_font_print(x, y, text, NULL, vertices, sizeof(vertices));
@@ -1085,9 +1031,8 @@ void renderText(const char* text, float x, float y, float scale) {
     glDrawArrays(GL_QUADS, 0, num_quads * 4);
     glDisableClientState(GL_VERTEX_ARRAY);
 }
-// Отображает главное меню игры
 
-void drawMenu() {
+void drawMenu() {					/*	Отображает главное меню игры	*/
     glColor3f(0.0f, 0.0f, 0.0f);
     glBegin(GL_QUADS);
     glVertex2f(0, 0);
@@ -1121,9 +1066,8 @@ void drawMenu() {
 
     renderText("Press I for info", 20, HEIGHT - 40, 2.0f);
 }
-// Отображает экран с информацией о бонусах
 
-void drawInfo() {
+void drawInfo() {					/*	Отображает экран с информацией о бонусах	*/
     glColor3f(0.0f, 0.0f, 0.0f);
     glBegin(GL_QUADS);
     glVertex2f(0, 0);
@@ -1157,9 +1101,8 @@ void drawInfo() {
 
     renderText("Press I to return", WIDTH - 220, HEIGHT - 40, 2.0f);
 }
-// Основная функция отрисовки текущего состояния
 
-void render() {
+void render() {						/*	Основная функция отрисовки текущего состояния	*/
     glClear(GL_COLOR_BUFFER_BIT);
 
     if (gameState == PLAYING) {
@@ -1240,9 +1183,8 @@ void render() {
         drawInfo();
     }
 }
-// Основная функция программы
 
-int main() {
+int main() {							/*	Основная функция программы	*/
     srand((unsigned int)time(NULL));
 
     if (!glfwInit()) return -1;

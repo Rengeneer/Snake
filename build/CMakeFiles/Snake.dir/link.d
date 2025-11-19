@@ -3,6 +3,7 @@
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o \
   CMakeFiles/Snake.dir/src/Source.c.o \
+  CMakeFiles/Snake.dir/src/errors/err.c.o \
   /usr/lib64/libglfw.so.3.4 \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
@@ -45,6 +46,8 @@
 /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o:
 
 CMakeFiles/Snake.dir/src/Source.c.o:
+
+CMakeFiles/Snake.dir/src/errors/err.c.o:
 
 /usr/lib64/libglfw.so.3.4:
 

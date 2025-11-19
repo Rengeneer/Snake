@@ -85,12 +85,12 @@ clean: CMakeFiles/Snake.dir/clean
 CMakeFiles/Snake.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=1,2 "Built target Snake"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=1,2,3 "Built target Snake"
 .PHONY : CMakeFiles/Snake.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Snake.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/caduceus/Projects/snake/Snake/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/caduceus/Projects/snake/Snake/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Snake.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/caduceus/Projects/snake/Snake/build/CMakeFiles 0
 .PHONY : CMakeFiles/Snake.dir/rule
@@ -102,7 +102,7 @@ Snake: CMakeFiles/Snake.dir/rule
 # codegen rule for target.
 CMakeFiles/Snake.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=1,2 "Finished codegen for target Snake"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target Snake"
 .PHONY : CMakeFiles/Snake.dir/codegen
 
 # clean rule for target.

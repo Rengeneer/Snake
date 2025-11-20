@@ -1,6 +1,8 @@
 #ifndef SOURCE_H
 #define SOURCE_H
 
+	#include <GLFW/glfw3.h>
+	
 	/* ---------------- *
 	|					|
 	|		Consts		|
@@ -14,7 +16,6 @@
 	#define WALL_THICKNESS 1
 	#define MAX_SNAKE_LENGTH 500
 	#define MAX_WALLS 200
-	#define SIMULATION_DEPTH 3
 	#define BONUS_LIFETIME 100
 
 	/* ---------------- *
@@ -78,5 +79,36 @@
 		PLAYING, 
 		INFO 
 	};
+
+	/* ---------------- *
+	|					|
+	|		GLOBAL		|
+	|					|
+	* ----------------- */
+
+	extern unsigned char SIMULATION_DEPTH;
+
+	extern int snakeLength;
+
+	extern int gameOver;
+	
+	extern int score;
+	extern int foodEaten;
+
+	extern enum GameState gameState;
+
+	extern double start_time;
+	extern double gameover_time;
+	extern double update_count;
+	extern double avg_fps;
+
+	/* ---------------- *
+	|					|
+	|		BENCH		|
+	|					|
+	* ----------------- */
+
+	GLFWwindow* 	prepare_window	(	void										);
+	void			bench_main		(	GLFWwindow* window,	unsigned char	level	);
 
 #endif

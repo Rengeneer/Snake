@@ -1,3 +1,0 @@
-/home/caduceus/Projects/snake/Snake/build/CMakeFiles/Snake.dir
-/home/caduceus/Projects/snake/Snake/build/CMakeFiles/edit_cache.dir
-/home/caduceus/Projects/snake/Snake/build/CMakeFiles/rebuild_cache.dir

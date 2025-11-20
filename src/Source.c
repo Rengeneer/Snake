@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define STB_EASY_FONT_IMPLEMENTATION
+// #include "../Include/stb/stb_easy_font.h"
 #include "stb_easy_font.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,6 +8,7 @@
 #include <time.h>
 #include <math.h>
 #include <limits.h>
+#include <string.h>
 
 #include "errors/err.h"
 #include "Source.h"
@@ -17,6 +19,8 @@
 	|	   GLOBAL		|
 	|					|
 	* ----------------- */
+
+unsigned char SIMULATION_DEPTH = 3;
 
 Segment snake[MAX_SNAKE_LENGTH];
 
@@ -30,6 +34,8 @@ const int fieldMaxY = (HEIGHT / CELL_SIZE) - WALL_THICKNESS - 1;
 
 int walls[MAX_WALLS][2];
 int snakeLength = 1;
+
+int virtual_key = -1;
 
 int foodX, foodY;
 
@@ -70,6 +76,7 @@ int openList[40][30];
 int isValidNode(int x, int y);
 int isPositionValid(int x, int y);
 int isPositionValidInSimulation(SimulationState* state, int x, int y);
+extern void _glfwInputKey(GLFWwindow* window, int key, int scancode, int action, int mods);
 
    /* ----------------- *
 	|					|
@@ -821,11 +828,20 @@ void processInput(GLFWwindow* window) {				/*	Обрабатывает ввод 
         glfwSetWindowShouldClose(window, 1);
 
     if (gameState == MENU) {
-        for (int key = GLFW_KEY_1; key <= GLFW_KEY_3; key++) {
-            if (glfwGetKey(window, key) == GLFW_PRESS) {
-                initGame(key - GLFW_KEY_0);
-                gameState = PLAYING;
-            }
+    	if (virtual_key != -1)
+    	{
+    		initGame(virtual_key);
+    		gameState = PLAYING;
+    		virtual_key = -1;
+    	}
+    	else
+    	{
+        	for (int key = GLFW_KEY_1; key <= GLFW_KEY_3; key++) {
+           		if (glfwGetKey(window, key) == GLFW_PRESS) {
+            	    initGame(key - GLFW_KEY_0);
+                	gameState = PLAYING;
+            	}
+        	}
         }
         if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS && !iKeyPressed) {
             gameState = INFO;
@@ -1185,19 +1201,22 @@ void render() {						/*	Основная функция отрисовки те�
     }
 }
 
-int main() {							/*	Основная функция программы	*/
+/*	Основная функция программы	 */
+
+/*
+int main() {							
     srand((unsigned int)time(NULL));
 
-    if (!glfwInit()) return -1;
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Snake Game with Improved Bot", NULL, NULL);
-    if (!window) { glfwTerminate(); return -1; }
-    glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
+  	if (!glfwInit()) return -1;
+  	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Snake Game with Improved Bot", NULL, NULL);
+   	if (!window) { glfwTerminate(); return -1; }
+   	glfwMakeContextCurrent(window);
+   	glfwSwapInterval(1);
 
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(0, WIDTH, HEIGHT, 0, -1, 1);
-    glMatrixMode(GL_MODELVIEW);
+  	glMatrixMode(GL_PROJECTION);
+   	glLoadIdentity();
+   	glOrtho(0, WIDTH, HEIGHT, 0, -1, 1);
+   	glMatrixMode(GL_MODELVIEW);
 
     gameState = MENU;
     double lastUpdateTime = glfwGetTime();
@@ -1220,3 +1239,102 @@ int main() {							/*	Основная функция программы	*/
     glfwTerminate();
     return 0;
 }
+*/
+	/* ---------------- *
+	|					|
+	|		BENCH		|
+	|					|
+	* ----------------- */
+
+	static void clear_global(void)
+	{
+		
+		memset(snake, 0, sizeof(snake));
+		
+		dir = RIGHT;
+		pendingDir = NONE;
+		
+		memset(walls, 0, sizeof(walls));
+		snakeLength = 1;
+		
+		foodX = 0;
+		foodY = 0;
+		
+		gameOver = 0;
+		score = 0;
+		
+		wallsCount = 0;
+		foodEaten = 0;
+
+		currentBonus.x = -1;
+		currentBonus.y = -1;
+		currentBonus.type = -1;
+		currentBonus.lifetime = 0;
+		
+		multiplierCount = 0;
+		multiplierActive = 0;
+		
+		gameState = MENU;
+		currentLevel = 1;
+		
+		botEnabled = 1;
+		panicMode = 0;
+		
+		hungerCounter = 0;
+		currentHungerPenalty = 0.0f;
+		
+		start_time = -1.;
+		gameover_time = -1.;
+		update_count = 0.;
+		avg_fps = 0.;
+		
+		memset(nodes, 0, sizeof(nodes));
+		memset(closedList, 0, sizeof(closedList));
+		memset(openList, 0, sizeof(openList));
+	}
+
+	GLFWwindow* prepare_window(void)
+	{
+		srand((unsigned int)time(NULL));
+	    if (!glfwInit()) return NULL;
+   		GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Snake Game with Improved Bot", NULL, NULL);
+    	if (!window) { glfwTerminate(); return NULL; }
+    	glfwMakeContextCurrent(window);
+    	glfwSwapInterval(1);
+
+   	    glMatrixMode(GL_PROJECTION);
+    	glLoadIdentity();
+    	glOrtho(0, WIDTH, HEIGHT, 0, -1, 1);
+    	glMatrixMode(GL_MODELVIEW);
+
+    	return window;
+	}
+
+	void bench_main(GLFWwindow* window, unsigned char level)
+	{
+		clear_global();
+		gameState = MENU;
+	    double lastUpdateTime = glfwGetTime();
+
+	    // glfwSetKeyState(window, level + GLFW_KEY_0, GLFW_PRESS);
+
+		virtual_key = level;		
+
+		while (!gameOver) {
+	        double currentTime = glfwGetTime();
+	        
+	        processInput(window);
+		
+	        if (currentTime - lastUpdateTime >= UPDATE_INTERVAL && gameState == PLAYING) {
+	            updateGame();
+	            update_count += 1;
+	            lastUpdateTime = currentTime;
+	        }
+		
+	        render();
+	        glfwSwapBuffers(window);
+	        glfwPollEvents();
+	    }
+	}
+
+

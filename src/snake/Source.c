@@ -10,7 +10,7 @@
 #include <limits.h>
 #include <string.h>
 
-#include "errors/err.h"
+#include "../errors/err.h"
 #include "Source.h"
 
 
@@ -1203,8 +1203,7 @@ void render() {						/*	Основная функция отрисовки те�
 
 /*	Основная функция программы	 */
 
-/*
-int main() {							
+int start_snake(void) {
     srand((unsigned int)time(NULL));
 
   	if (!glfwInit()) return -1;
@@ -1239,7 +1238,6 @@ int main() {
     glfwTerminate();
     return 0;
 }
-*/
 	/* ---------------- *
 	|					|
 	|		BENCH		|

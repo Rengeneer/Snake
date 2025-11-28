@@ -72,35 +72,69 @@ include CMakeFiles/Snake.dir/flags.make
 CMakeFiles/Snake.dir/codegen:
 .PHONY : CMakeFiles/Snake.dir/codegen
 
-CMakeFiles/Snake.dir/src/Source.c.o: CMakeFiles/Snake.dir/flags.make
-CMakeFiles/Snake.dir/src/Source.c.o: /home/caduceus/Projects/snake/Snake/src/Source.c
-CMakeFiles/Snake.dir/src/Source.c.o: CMakeFiles/Snake.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Snake.dir/src/Source.c.o"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Snake.dir/src/Source.c.o -MF CMakeFiles/Snake.dir/src/Source.c.o.d -o CMakeFiles/Snake.dir/src/Source.c.o -c /home/caduceus/Projects/snake/Snake/src/Source.c
+CMakeFiles/Snake.dir/src/errors/err.c.o: CMakeFiles/Snake.dir/flags.make
+CMakeFiles/Snake.dir/src/errors/err.c.o: /home/caduceus/Projects/snake/Snake/src/errors/err.c
+CMakeFiles/Snake.dir/src/errors/err.c.o: CMakeFiles/Snake.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Snake.dir/src/errors/err.c.o"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Snake.dir/src/errors/err.c.o -MF CMakeFiles/Snake.dir/src/errors/err.c.o.d -o CMakeFiles/Snake.dir/src/errors/err.c.o -c /home/caduceus/Projects/snake/Snake/src/errors/err.c
 
-CMakeFiles/Snake.dir/src/Source.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Snake.dir/src/Source.c.i"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/caduceus/Projects/snake/Snake/src/Source.c > CMakeFiles/Snake.dir/src/Source.c.i
+CMakeFiles/Snake.dir/src/errors/err.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Snake.dir/src/errors/err.c.i"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/caduceus/Projects/snake/Snake/src/errors/err.c > CMakeFiles/Snake.dir/src/errors/err.c.i
 
-CMakeFiles/Snake.dir/src/Source.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Snake.dir/src/Source.c.s"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/caduceus/Projects/snake/Snake/src/Source.c -o CMakeFiles/Snake.dir/src/Source.c.s
+CMakeFiles/Snake.dir/src/errors/err.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Snake.dir/src/errors/err.c.s"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/caduceus/Projects/snake/Snake/src/errors/err.c -o CMakeFiles/Snake.dir/src/errors/err.c.s
+
+CMakeFiles/Snake.dir/src/snake.c.o: CMakeFiles/Snake.dir/flags.make
+CMakeFiles/Snake.dir/src/snake.c.o: /home/caduceus/Projects/snake/Snake/src/snake.c
+CMakeFiles/Snake.dir/src/snake.c.o: CMakeFiles/Snake.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Snake.dir/src/snake.c.o"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Snake.dir/src/snake.c.o -MF CMakeFiles/Snake.dir/src/snake.c.o.d -o CMakeFiles/Snake.dir/src/snake.c.o -c /home/caduceus/Projects/snake/Snake/src/snake.c
+
+CMakeFiles/Snake.dir/src/snake.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Snake.dir/src/snake.c.i"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/caduceus/Projects/snake/Snake/src/snake.c > CMakeFiles/Snake.dir/src/snake.c.i
+
+CMakeFiles/Snake.dir/src/snake.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Snake.dir/src/snake.c.s"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/caduceus/Projects/snake/Snake/src/snake.c -o CMakeFiles/Snake.dir/src/snake.c.s
+
+CMakeFiles/Snake.dir/src/snake/Source.c.o: CMakeFiles/Snake.dir/flags.make
+CMakeFiles/Snake.dir/src/snake/Source.c.o: /home/caduceus/Projects/snake/Snake/src/snake/Source.c
+CMakeFiles/Snake.dir/src/snake/Source.c.o: CMakeFiles/Snake.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Snake.dir/src/snake/Source.c.o"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Snake.dir/src/snake/Source.c.o -MF CMakeFiles/Snake.dir/src/snake/Source.c.o.d -o CMakeFiles/Snake.dir/src/snake/Source.c.o -c /home/caduceus/Projects/snake/Snake/src/snake/Source.c
+
+CMakeFiles/Snake.dir/src/snake/Source.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Snake.dir/src/snake/Source.c.i"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/caduceus/Projects/snake/Snake/src/snake/Source.c > CMakeFiles/Snake.dir/src/snake/Source.c.i
+
+CMakeFiles/Snake.dir/src/snake/Source.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Snake.dir/src/snake/Source.c.s"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/caduceus/Projects/snake/Snake/src/snake/Source.c -o CMakeFiles/Snake.dir/src/snake/Source.c.s
 
 # Object files for target Snake
 Snake_OBJECTS = \
-"CMakeFiles/Snake.dir/src/Source.c.o"
+"CMakeFiles/Snake.dir/src/errors/err.c.o" \
+"CMakeFiles/Snake.dir/src/snake.c.o" \
+"CMakeFiles/Snake.dir/src/snake/Source.c.o"
 
 # External object files for target Snake
 Snake_EXTERNAL_OBJECTS =
 
-/home/caduceus/Projects/snake/Snake/bin/Snake: CMakeFiles/Snake.dir/src/Source.c.o
+/home/caduceus/Projects/snake/Snake/bin/Snake: CMakeFiles/Snake.dir/src/errors/err.c.o
+/home/caduceus/Projects/snake/Snake/bin/Snake: CMakeFiles/Snake.dir/src/snake.c.o
+/home/caduceus/Projects/snake/Snake/bin/Snake: CMakeFiles/Snake.dir/src/snake/Source.c.o
 /home/caduceus/Projects/snake/Snake/bin/Snake: CMakeFiles/Snake.dir/build.make
 /home/caduceus/Projects/snake/Snake/bin/Snake: CMakeFiles/Snake.dir/compiler_depend.ts
-/home/caduceus/Projects/snake/Snake/bin/Snake: /usr/lib64/libglfw.so.3.4
+/home/caduceus/Projects/snake/Snake/bin/Snake: libs/glfw/src/libglfw3.a
+/home/caduceus/Projects/snake/Snake/bin/Snake: /usr/lib64/librt.a
+/home/caduceus/Projects/snake/Snake/bin/Snake: /usr/lib64/libm.so
 /home/caduceus/Projects/snake/Snake/bin/Snake: /usr/lib64/libGLX.so
 /home/caduceus/Projects/snake/Snake/bin/Snake: /usr/lib64/libOpenGL.so
 /home/caduceus/Projects/snake/Snake/bin/Snake: CMakeFiles/Snake.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable /home/caduceus/Projects/snake/Snake/bin/Snake"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/caduceus/Projects/snake/Snake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable /home/caduceus/Projects/snake/Snake/bin/Snake"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Snake.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

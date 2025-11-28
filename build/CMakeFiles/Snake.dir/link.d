@@ -2,13 +2,22 @@
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o \
-  CMakeFiles/Snake.dir/src/Source.c.o \
-  /usr/lib64/libglfw.so.3.4 \
+  CMakeFiles/Snake.dir/src/errors/err.c.o \
+  CMakeFiles/Snake.dir/src/snake.c.o \
+  CMakeFiles/Snake.dir/src/snake/Source.c.o \
+  libs/glfw/src/libglfw3.a \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
   /lib64/libm.so.6 \
   /lib64/libmvec.so.1 \
+  /usr/lib64/librt.a \
+  /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
+  /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
+  /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
+  /lib64/libm.so.6 \
+  /lib64/libmvec.so.1 \
+  /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libdl.a \
   /usr/lib64/libGLX.so \
   /usr/lib64/libOpenGL.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/libgcc.a \
@@ -44,9 +53,13 @@
 
 /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o:
 
-CMakeFiles/Snake.dir/src/Source.c.o:
+CMakeFiles/Snake.dir/src/errors/err.c.o:
 
-/usr/lib64/libglfw.so.3.4:
+CMakeFiles/Snake.dir/src/snake.c.o:
+
+CMakeFiles/Snake.dir/src/snake/Source.c.o:
+
+libs/glfw/src/libglfw3.a:
 
 /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so:
 
@@ -57,6 +70,20 @@ CMakeFiles/Snake.dir/src/Source.c.o:
 /lib64/libm.so.6:
 
 /lib64/libmvec.so.1:
+
+/usr/lib64/librt.a:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so:
+
+/lib64/libm.so.6:
+
+/lib64/libmvec.so.1:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libdl.a:
 
 /usr/lib64/libGLX.so:
 

@@ -7,7 +7,7 @@ events:
       - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:205 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      The system is: Linux - 6.17.6-200.fc42.x86_64 - x86_64
+      The system is: Linux - 6.17.8-200.fc42.x86_64 - x86_64
   -
     kind: "message-v1"
     backtrace:
@@ -39,8 +39,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-kY2cAl"
-      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-kY2cAl"
+      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-lxoRyJ"
+      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-lxoRyJ"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -49,13 +49,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-kY2cAl'
+        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-lxoRyJ'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_38666/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_38666.dir/build.make CMakeFiles/cmTC_38666.dir/build
-        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-kY2cAl'
-        Building C object CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o
-        /usr/lib64/ccache/cc   -v -o CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fe07e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_fe07e.dir/build.make CMakeFiles/cmTC_fe07e.dir/build
+        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-lxoRyJ'
+        Building C object CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o
+        /usr/lib64/ccache/cc   -v -o CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -86,8 +86,8 @@ events:
         COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/15/:/usr/libexec/gcc/x86_64-redhat-linux/15/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/15/:/usr/lib/gcc/x86_64-redhat-linux/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/15/:/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/15/../../../:/lib/:/usr/lib/
         COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-c' '-o' 'CMakeFiles/cmTC_b8065.dir/CMakeCCompilerABI.c.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b8065.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_38666
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38666.dir/link.txt --verbose=1
+        Linking C executable cmTC_fe07e
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe07e.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper
@@ -100,14 +100,14 @@ events:
         gcc version 15.2.1 20251111 (Red Hat 15.2.1-4) (GCC) 
         COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/15/:/usr/libexec/gcc/x86_64-redhat-linux/15/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/15/:/usr/lib/gcc/x86_64-redhat-linux/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/15/:/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/15/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_38666' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_38666.'
-         /usr/libexec/gcc/x86_64-redhat-linux/15/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBK1nKi.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_38666 /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/15 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/15/crtend.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_fe07e' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fe07e.'
+         /usr/libexec/gcc/x86_64-redhat-linux/15/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper -plugin-opt=-fresolution=/tmp/cceSx9wN.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_fe07e /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/15 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/15/crtend.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o
         collect2 version 15.2.1 20251111 (Red Hat 15.2.1-4)
-        /usr/bin/ld -plugin /usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBK1nKi.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_38666 /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/15 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/15/crtend.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o
+        /usr/bin/ld -plugin /usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper -plugin-opt=-fresolution=/tmp/cceSx9wN.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_fe07e /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/15 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/15/crtend.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o
         GNU ld version 2.44-6.fc42
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_38666' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_38666.'
-        /usr/lib64/ccache/cc  -v -Wl,-v CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o -o cmTC_38666
-        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-kY2cAl'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_fe07e' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fe07e.'
+        /usr/lib64/ccache/cc  -v -Wl,-v CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o -o cmTC_fe07e
+        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-lxoRyJ'
         
       exitCode: 0
   -
@@ -140,13 +140,13 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-kY2cAl']
+        ignore line: [Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-lxoRyJ']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_38666/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_38666.dir/build.make CMakeFiles/cmTC_38666.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-kY2cAl']
-        ignore line: [Building C object CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/lib64/ccache/cc   -v -o CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fe07e/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_fe07e.dir/build.make CMakeFiles/cmTC_fe07e.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-lxoRyJ']
+        ignore line: [Building C object CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/lib64/ccache/cc   -v -o CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -177,8 +177,8 @@ events:
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/15/:/usr/libexec/gcc/x86_64-redhat-linux/15/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/15/:/usr/lib/gcc/x86_64-redhat-linux/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/15/:/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/15/../../../:/lib/:/usr/lib/]
         ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-c' '-o' 'CMakeFiles/cmTC_b8065.dir/CMakeCCompilerABI.c.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b8065.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_38666]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38666.dir/link.txt --verbose=1]
+        ignore line: [Linking C executable cmTC_fe07e]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe07e.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper]
@@ -191,13 +191,13 @@ events:
         ignore line: [gcc version 15.2.1 20251111 (Red Hat 15.2.1-4) (GCC) ]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/15/:/usr/libexec/gcc/x86_64-redhat-linux/15/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/15/:/usr/lib/gcc/x86_64-redhat-linux/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/15/:/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/15/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_38666' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_38666.']
-        link line: [ /usr/libexec/gcc/x86_64-redhat-linux/15/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBK1nKi.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_38666 /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/15 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/15/crtend.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_fe07e' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fe07e.']
+        link line: [ /usr/libexec/gcc/x86_64-redhat-linux/15/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper -plugin-opt=-fresolution=/tmp/cceSx9wN.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_fe07e /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/15 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/15/crtend.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o]
           arg [/usr/libexec/gcc/x86_64-redhat-linux/15/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccBK1nKi.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cceSx9wN.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -212,7 +212,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_38666] ==> ignore
+          arg [cmTC_fe07e] ==> ignore
           arg [/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o]
           arg [/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o]
           arg [/usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o]
@@ -224,7 +224,7 @@ events:
           arg [-L/lib] ==> dir [/lib]
           arg [-L/usr/lib] ==> dir [/usr/lib]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -239,7 +239,7 @@ events:
           arg [/usr/lib/gcc/x86_64-redhat-linux/15/crtend.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/15/crtend.o]
           arg [/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o]
         ignore line: [collect2 version 15.2.1 20251111 (Red Hat 15.2.1-4)]
-        ignore line: [/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBK1nKi.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_38666 /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/15 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_38666.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/15/crtend.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o]
+        ignore line: [/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-redhat-linux/15/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/15/lto-wrapper -plugin-opt=-fresolution=/tmp/cceSx9wN.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_fe07e /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/15 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/15/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_fe07e.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/15/crtend.o /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crtn.o]
         linker tool for 'C': /usr/bin/ld
         collapse obj [/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
         collapse obj [/usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
@@ -274,33 +274,229 @@ events:
       - "/usr/share/cmake/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
       - "/usr/share/cmake/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
       - "/usr/share/cmake/Modules/FindThreads.cmake:163 (_threads_check_libc)"
-      - "/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
-      - "/usr/lib64/cmake/glfw3/glfw3Config.cmake:2 (find_dependency)"
-      - "CMakeLists.txt:22 (find_package)"
+      - "libs/glfw/CMakeLists.txt:52 (find_package)"
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-tzeK9t"
-      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-tzeK9t"
+      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-a1Rvb8"
+      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-a1Rvb8"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
       CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/caduceus/Projects/snake/Snake/libs/glfw/CMake/modules"
     buildResult:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-tzeK9t'
+        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-a1Rvb8'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c97a0/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_c97a0.dir/build.make CMakeFiles/cmTC_c97a0.dir/build
-        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-tzeK9t'
-        Building C object CMakeFiles/cmTC_c97a0.dir/src.c.o
-        /usr/lib64/ccache/cc -DCMAKE_HAVE_LIBC_PTHREAD  -std=c11 -o CMakeFiles/cmTC_c97a0.dir/src.c.o -c /home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-tzeK9t/src.c
-        Linking C executable cmTC_c97a0
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c97a0.dir/link.txt --verbose=1
-        /usr/lib64/ccache/cc CMakeFiles/cmTC_c97a0.dir/src.c.o -o cmTC_c97a0
-        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-tzeK9t'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fc66a/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_fc66a.dir/build.make CMakeFiles/cmTC_fc66a.dir/build
+        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-a1Rvb8'
+        Building C object CMakeFiles/cmTC_fc66a.dir/src.c.o
+        /usr/lib64/ccache/cc -DCMAKE_HAVE_LIBC_PTHREAD  -std=c11 -o CMakeFiles/cmTC_fc66a.dir/src.c.o -c /home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-a1Rvb8/src.c
+        Linking C executable cmTC_fc66a
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc66a.dir/link.txt --verbose=1
+        /usr/lib64/ccache/cc CMakeFiles/cmTC_fc66a.dir/src.c.o -o cmTC_fc66a
+        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-a1Rvb8'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "libs/glfw/src/CMakeLists.txt:70 (check_function_exists)"
+    checks:
+      - "Looking for memfd_create"
+    directories:
+      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-534mv6"
+      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-534mv6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/caduceus/Projects/snake/Snake/libs/glfw/CMake/modules"
+    buildResult:
+      variable: "HAVE_MEMFD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-534mv6'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_551a4/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_551a4.dir/build.make CMakeFiles/cmTC_551a4.dir/build
+        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-534mv6'
+        Building C object CMakeFiles/cmTC_551a4.dir/CheckFunctionExists.c.o
+        /usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=memfd_create -std=c11 -o CMakeFiles/cmTC_551a4.dir/CheckFunctionExists.c.o -c /home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-534mv6/CheckFunctionExists.c
+        Linking C executable cmTC_551a4
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_551a4.dir/link.txt --verbose=1
+        /usr/lib64/ccache/cc  -DCHECK_FUNCTION_EXISTS=memfd_create CMakeFiles/cmTC_551a4.dir/CheckFunctionExists.c.o -o cmTC_551a4
+        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-534mv6'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckLibraryExists.cmake:78 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:693 (check_library_exists)"
+      - "libs/glfw/src/CMakeLists.txt:176 (find_package)"
+    checks:
+      - "Looking for XOpenDisplay in /usr/lib64/libX11.so;/usr/lib64/libXext.so"
+    directories:
+      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-JfqsG5"
+      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-JfqsG5"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/caduceus/Projects/snake/Snake/libs/glfw/CMake/modules"
+    buildResult:
+      variable: "X11_LIB_X11_SOLO"
+      cached: true
+      stdout: |
+        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-JfqsG5'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9460e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_9460e.dir/build.make CMakeFiles/cmTC_9460e.dir/build
+        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-JfqsG5'
+        Building C object CMakeFiles/cmTC_9460e.dir/CheckFunctionExists.c.o
+        /usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -std=c11 -o CMakeFiles/cmTC_9460e.dir/CheckFunctionExists.c.o -c /home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-JfqsG5/CheckFunctionExists.c
+        Linking C executable cmTC_9460e
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9460e.dir/link.txt --verbose=1
+        /usr/lib64/ccache/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay CMakeFiles/cmTC_9460e.dir/CheckFunctionExists.c.o -o cmTC_9460e  /usr/lib64/libX11.so /usr/lib64/libXext.so
+        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-JfqsG5'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:708 (check_function_exists)"
+      - "libs/glfw/src/CMakeLists.txt:176 (find_package)"
+    checks:
+      - "Looking for gethostbyname"
+    directories:
+      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-t9Li3t"
+      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-t9Li3t"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/caduceus/Projects/snake/Snake/libs/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_GETHOSTBYNAME"
+      cached: true
+      stdout: |
+        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-t9Li3t'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_66011/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_66011.dir/build.make CMakeFiles/cmTC_66011.dir/build
+        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-t9Li3t'
+        Building C object CMakeFiles/cmTC_66011.dir/CheckFunctionExists.c.o
+        /usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -std=c11 -o CMakeFiles/cmTC_66011.dir/CheckFunctionExists.c.o -c /home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-t9Li3t/CheckFunctionExists.c
+        Linking C executable cmTC_66011
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66011.dir/link.txt --verbose=1
+        /usr/lib64/ccache/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname CMakeFiles/cmTC_66011.dir/CheckFunctionExists.c.o -o cmTC_66011
+        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-t9Li3t'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:722 (check_function_exists)"
+      - "libs/glfw/src/CMakeLists.txt:176 (find_package)"
+    checks:
+      - "Looking for connect"
+    directories:
+      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-uw0NtC"
+      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-uw0NtC"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/caduceus/Projects/snake/Snake/libs/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_CONNECT"
+      cached: true
+      stdout: |
+        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-uw0NtC'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2ec08/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_2ec08.dir/build.make CMakeFiles/cmTC_2ec08.dir/build
+        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-uw0NtC'
+        Building C object CMakeFiles/cmTC_2ec08.dir/CheckFunctionExists.c.o
+        /usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=connect -std=c11 -o CMakeFiles/cmTC_2ec08.dir/CheckFunctionExists.c.o -c /home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-uw0NtC/CheckFunctionExists.c
+        Linking C executable cmTC_2ec08
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2ec08.dir/link.txt --verbose=1
+        /usr/lib64/ccache/cc  -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_2ec08.dir/CheckFunctionExists.c.o -o cmTC_2ec08
+        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-uw0NtC'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:731 (check_function_exists)"
+      - "libs/glfw/src/CMakeLists.txt:176 (find_package)"
+    checks:
+      - "Looking for remove"
+    directories:
+      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-vYesiN"
+      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-vYesiN"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/caduceus/Projects/snake/Snake/libs/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_REMOVE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-vYesiN'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_426d7/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_426d7.dir/build.make CMakeFiles/cmTC_426d7.dir/build
+        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-vYesiN'
+        Building C object CMakeFiles/cmTC_426d7.dir/CheckFunctionExists.c.o
+        /usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=remove -std=c11 -o CMakeFiles/cmTC_426d7.dir/CheckFunctionExists.c.o -c /home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-vYesiN/CheckFunctionExists.c
+        Linking C executable cmTC_426d7
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_426d7.dir/link.txt --verbose=1
+        /usr/lib64/ccache/cc  -DCHECK_FUNCTION_EXISTS=remove CMakeFiles/cmTC_426d7.dir/CheckFunctionExists.c.o -o cmTC_426d7
+        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-vYesiN'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:740 (check_function_exists)"
+      - "libs/glfw/src/CMakeLists.txt:176 (find_package)"
+    checks:
+      - "Looking for shmat"
+    directories:
+      source: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-erBRs6"
+      binary: "/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-erBRs6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/caduceus/Projects/snake/Snake/libs/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_SHMAT"
+      cached: true
+      stdout: |
+        Change Dir: '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-erBRs6'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_901a7/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_901a7.dir/build.make CMakeFiles/cmTC_901a7.dir/build
+        gmake[1]: Entering directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-erBRs6'
+        Building C object CMakeFiles/cmTC_901a7.dir/CheckFunctionExists.c.o
+        /usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=shmat -std=c11 -o CMakeFiles/cmTC_901a7.dir/CheckFunctionExists.c.o -c /home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-erBRs6/CheckFunctionExists.c
+        Linking C executable cmTC_901a7
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_901a7.dir/link.txt --verbose=1
+        /usr/lib64/ccache/cc  -DCHECK_FUNCTION_EXISTS=shmat CMakeFiles/cmTC_901a7.dir/CheckFunctionExists.c.o -o cmTC_901a7
+        gmake[1]: Leaving directory '/home/caduceus/Projects/snake/Snake/build/CMakeFiles/CMakeScratch/TryCompile-erBRs6'
         
       exitCode: 0
 ...

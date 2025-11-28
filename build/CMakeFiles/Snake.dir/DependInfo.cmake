@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/caduceus/Projects/snake/Snake/src/Source.c" "CMakeFiles/Snake.dir/src/Source.c.o" "gcc" "CMakeFiles/Snake.dir/src/Source.c.o.d"
+  "/home/caduceus/Projects/snake/Snake/src/errors/err.c" "CMakeFiles/Snake.dir/src/errors/err.c.o" "gcc" "CMakeFiles/Snake.dir/src/errors/err.c.o.d"
+  "/home/caduceus/Projects/snake/Snake/src/snake.c" "CMakeFiles/Snake.dir/src/snake.c.o" "gcc" "CMakeFiles/Snake.dir/src/snake.c.o.d"
+  "/home/caduceus/Projects/snake/Snake/src/snake/Source.c" "CMakeFiles/Snake.dir/src/snake/Source.c.o" "gcc" "CMakeFiles/Snake.dir/src/snake/Source.c.o.d"
   "" "/home/caduceus/Projects/snake/Snake/bin/Snake" "gcc" "CMakeFiles/Snake.dir/link.d"
   )
 

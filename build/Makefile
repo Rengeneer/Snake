@@ -130,29 +130,168 @@ Snake/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/build
 .PHONY : Snake/fast
 
-src/Source.o: src/Source.c.o
-.PHONY : src/Source.o
+#=============================================================================
+# Target rules for targets named Snake_debug
+
+# Build rule for target.
+Snake_debug: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Snake_debug
+.PHONY : Snake_debug
+
+# fast build rule for target.
+Snake_debug/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/build
+.PHONY : Snake_debug/fast
+
+#=============================================================================
+# Target rules for targets named Snake_bench
+
+# Build rule for target.
+Snake_bench: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Snake_bench
+.PHONY : Snake_bench
+
+# fast build rule for target.
+Snake_bench/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/build
+.PHONY : Snake_bench/fast
+
+#=============================================================================
+# Target rules for targets named glfw
+
+# Build rule for target.
+glfw: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 glfw
+.PHONY : glfw
+
+# fast build rule for target.
+glfw/fast:
+	$(MAKE) $(MAKESILENT) -f libs/glfw/src/CMakeFiles/glfw.dir/build.make libs/glfw/src/CMakeFiles/glfw.dir/build
+.PHONY : glfw/fast
+
+#=============================================================================
+# Target rules for targets named update_mappings
+
+# Build rule for target.
+update_mappings: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 update_mappings
+.PHONY : update_mappings
+
+# fast build rule for target.
+update_mappings/fast:
+	$(MAKE) $(MAKESILENT) -f libs/glfw/src/CMakeFiles/update_mappings.dir/build.make libs/glfw/src/CMakeFiles/update_mappings.dir/build
+.PHONY : update_mappings/fast
+
+src/bench/bench.o: src/bench/bench.c.o
+.PHONY : src/bench/bench.o
 
 # target to build an object file
-src/Source.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/Source.c.o
-.PHONY : src/Source.c.o
+src/bench/bench.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/bench/bench.c.o
+.PHONY : src/bench/bench.c.o
 
-src/Source.i: src/Source.c.i
-.PHONY : src/Source.i
+src/bench/bench.i: src/bench/bench.c.i
+.PHONY : src/bench/bench.i
 
 # target to preprocess a source file
-src/Source.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/Source.c.i
-.PHONY : src/Source.c.i
+src/bench/bench.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/bench/bench.c.i
+.PHONY : src/bench/bench.c.i
 
-src/Source.s: src/Source.c.s
-.PHONY : src/Source.s
+src/bench/bench.s: src/bench/bench.c.s
+.PHONY : src/bench/bench.s
 
 # target to generate assembly for a file
-src/Source.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/Source.c.s
-.PHONY : src/Source.c.s
+src/bench/bench.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/bench/bench.c.s
+.PHONY : src/bench/bench.c.s
+
+src/errors/err.o: src/errors/err.c.o
+.PHONY : src/errors/err.o
+
+# target to build an object file
+src/errors/err.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/errors/err.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/errors/err.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/errors/err.c.o
+.PHONY : src/errors/err.c.o
+
+src/errors/err.i: src/errors/err.c.i
+.PHONY : src/errors/err.i
+
+# target to preprocess a source file
+src/errors/err.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/errors/err.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/errors/err.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/errors/err.c.i
+.PHONY : src/errors/err.c.i
+
+src/errors/err.s: src/errors/err.c.s
+.PHONY : src/errors/err.s
+
+# target to generate assembly for a file
+src/errors/err.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/errors/err.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/errors/err.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/errors/err.c.s
+.PHONY : src/errors/err.c.s
+
+src/snake.o: src/snake.c.o
+.PHONY : src/snake.o
+
+# target to build an object file
+src/snake.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/snake.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/snake.c.o
+.PHONY : src/snake.c.o
+
+src/snake.i: src/snake.c.i
+.PHONY : src/snake.i
+
+# target to preprocess a source file
+src/snake.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/snake.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/snake.c.i
+.PHONY : src/snake.c.i
+
+src/snake.s: src/snake.c.s
+.PHONY : src/snake.s
+
+# target to generate assembly for a file
+src/snake.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/snake.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/snake.c.s
+.PHONY : src/snake.c.s
+
+src/snake/Source.o: src/snake/Source.c.o
+.PHONY : src/snake/Source.o
+
+# target to build an object file
+src/snake/Source.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/snake/Source.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/snake/Source.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/snake/Source.c.o
+.PHONY : src/snake/Source.c.o
+
+src/snake/Source.i: src/snake/Source.c.i
+.PHONY : src/snake/Source.i
+
+# target to preprocess a source file
+src/snake/Source.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/snake/Source.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/snake/Source.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/snake/Source.c.i
+.PHONY : src/snake/Source.c.i
+
+src/snake/Source.s: src/snake/Source.c.s
+.PHONY : src/snake/Source.s
+
+# target to generate assembly for a file
+src/snake/Source.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/snake/Source.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_debug.dir/build.make CMakeFiles/Snake_debug.dir/src/snake/Source.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake_bench.dir/build.make CMakeFiles/Snake_bench.dir/src/snake/Source.c.s
+.PHONY : src/snake/Source.c.s
 
 # Help Target
 help:
@@ -162,10 +301,23 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... update_mappings"
 	@echo "... Snake"
-	@echo "... src/Source.o"
-	@echo "... src/Source.i"
-	@echo "... src/Source.s"
+	@echo "... Snake_bench"
+	@echo "... Snake_debug"
+	@echo "... glfw"
+	@echo "... src/bench/bench.o"
+	@echo "... src/bench/bench.i"
+	@echo "... src/bench/bench.s"
+	@echo "... src/errors/err.o"
+	@echo "... src/errors/err.i"
+	@echo "... src/errors/err.s"
+	@echo "... src/snake.o"
+	@echo "... src/snake.i"
+	@echo "... src/snake.s"
+	@echo "... src/snake/Source.o"
+	@echo "... src/snake/Source.i"
+	@echo "... src/snake/Source.s"
 .PHONY : help
 
 

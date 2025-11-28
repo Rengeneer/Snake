@@ -21,12 +21,18 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/Include/stb")
 
-find_package(glfw3 3.4 REQUIRED)
-find_package(OpenGL REQUIRED)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 
+add_subdirectory(libs/glfw)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+
+find_package(OpenGL REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE 
 	OpenGL::GL
-	$<$<TARGET_EXISTS:glfw>:glfw>
 	m
 )
 

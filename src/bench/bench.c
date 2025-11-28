@@ -1,5 +1,5 @@
 #include "bench.h"
-#include "../Source.h"
+#include "../snake/Source.h"
 #include "../errors/err.h"
 #include <GLFW/glfw3.h>
 #include <assert.h>

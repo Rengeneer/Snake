@@ -1,0 +1,1 @@
+/usr/lib64/ccache/cc -rdynamic -Wl,--dependency-file=CMakeFiles/Snake_debug.dir/link.d CMakeFiles/Snake_debug.dir/src/errors/err.c.o CMakeFiles/Snake_debug.dir/src/snake.c.o CMakeFiles/Snake_debug.dir/src/snake/Source.c.o -o /home/caduceus/Projects/snake/Snake/bin/Snake_debug  libs/glfw/src/libglfw3.a -lm /usr/lib64/librt.a -lm -ldl /usr/lib64/libGLX.so /usr/lib64/libOpenGL.so

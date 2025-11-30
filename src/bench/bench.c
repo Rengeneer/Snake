@@ -104,11 +104,11 @@ static void next_line(struct bench_ctx* ctx)
 {
 	if (IS_FLAG(BCH_MX, ctx->flags))
 	{
-		ctx->_cur_ptr = ctx->_cur_ptr + 9 * sizeof(double);
+		ctx->_cur_ptr = (unsigned char*)ctx->_cur_ptr + 9 * sizeof(double);
 	}
 	else
 	{
-		ctx->_cur_ptr = ctx->_cur_ptr + 10 * sizeof(double);
+		ctx->_cur_ptr = (unsigned char*)ctx->_cur_ptr + 10 * sizeof(double);
 	}
 }
 

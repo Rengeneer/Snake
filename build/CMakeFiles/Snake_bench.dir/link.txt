@@ -1,1 +1,0 @@
-/usr/lib64/ccache/cc -Wl,--dependency-file=CMakeFiles/Snake_bench.dir/link.d CMakeFiles/Snake_bench.dir/src/bench/bench.c.o CMakeFiles/Snake_bench.dir/src/errors/err.c.o CMakeFiles/Snake_bench.dir/src/snake/Source.c.o -o /home/caduceus/Projects/snake/Snake/bin/Snake_bench  libs/glfw/src/libglfw3.a -lm /usr/lib64/librt.a -lm -ldl /usr/lib64/libGLX.so /usr/lib64/libOpenGL.so

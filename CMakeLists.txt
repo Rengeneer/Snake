@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
-project(Snake LANGUAGES C)
+project(Snake LANGUAGES C CUDA)
 
+set(CMAKE_CUDA_STANDARD 11)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)

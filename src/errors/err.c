@@ -35,12 +35,12 @@ static void _print_bt(void)
 		fprintf(stderr, "----- BACKTRACE END -----\n");
 		free(strings);
 	#elif _WIN32
-		void* bt[MAX_FRAMES];
+		void* bt[BT_MAX_FRAMES];
 		
 		HANDLE cur_proc = GetCurrentProcess();			/*	Получаем handler. Нужен для SymInitialize	*/
 		SymInitialize(cur_proc, NULL, TRUE);			/*	Инициализация обработчика символов	*/
 
-		USHORT frames = CaptureStackBackTrace(0, MAX_FRAMES, stack, NULL);		/*	Сбор стэка	*/	
+		USHORT frames = CaptureStackBackTrace(0, BT_MAX_FRAMES, bt, NULL);		/*	Сбор стэка	*/	
 		SYMBOL_INFO* symbol = (SYMBOL_INFO*)calloc(sizeof(SYMBOL_INFO) + 256 * sizeof(char), 1);		
 
 		symbol->MaxNameLen = 255;

@@ -13,6 +13,13 @@
 #include "../errors/err.h"
 #include "Source.h"
 
+// GPU Bot Integration
+#ifdef USE_GPU
+#include "../gpu/hip_bot.h"
+static int gpu_bot_initialized = 0;
+static int use_gpu_bot = 1;  // Флаг для переключения CPU/GPU бота
+#endif
+
 
 	/* ---------------- *
 	|					|
@@ -603,8 +610,91 @@ void botControlWithSimulation() {					/*	Управляет ботом с исп
     }
 }
 
+#ifdef USE_GPU
+void botControlGPU() {					/*	Управление ботом с использованием GPU	*/
+    if (gameOver || !botEnabled) return;
+    
+    // Инициализация GPU бота при первом вызове
+    if (!gpu_bot_initialized) {
+        if (hip_bot_is_available()) {
+            hip_bot_set_verbose(0);  // Отключаем verbose для игры
+            if (hip_bot_init() == 0) {
+                gpu_bot_initialized = 1;
+                printf("GPU Bot initialized successfully!\n");
+            } else {
+                printf("Failed to initialize GPU bot, falling back to CPU\n");
+                use_gpu_bot = 0;
+            }
+        } else {
+            printf("GPU not available, using CPU bot\n");
+            use_gpu_bot = 0;
+        }
+    }
+    
+    if (!use_gpu_bot) {
+        botControlWithSimulation();
+        return;
+    }
+    
+    // Конвертация состояния игры для GPU
+    CPUGameState cpu_state;
+    
+    // Копируем змейку
+    for (int i = 0; i < snakeLength; i++) {
+        cpu_state.snake[i].x = snake[i].x;
+        cpu_state.snake[i].y = snake[i].y;
+    }
+    cpu_state.snakeLength = snakeLength;
+    
+    // Копируем еду и бонус
+    cpu_state.foodX = foodX;
+    cpu_state.foodY = foodY;
+    cpu_state.bonus.x = currentBonus.x;
+    cpu_state.bonus.y = currentBonus.y;
+    cpu_state.bonus.type = currentBonus.type;
+    cpu_state.bonus.lifetime = currentBonus.lifetime;
+    
+    // Копируем стены
+    for (int i = 0; i < wallsCount; i++) {
+        cpu_state.walls[i][0] = walls[i][0];
+        cpu_state.walls[i][1] = walls[i][1];
+    }
+    cpu_state.wallsCount = wallsCount;
+    
+    // Копируем игровую информацию
+    cpu_state.score = score;
+    cpu_state.multiplierCount = multiplierCount;
+    
+    // Копируем границы
+    cpu_state.fieldMinX = fieldMinX;
+    cpu_state.fieldMinY = fieldMinY;
+    cpu_state.fieldMaxX = fieldMaxX;
+    cpu_state.fieldMaxY = fieldMaxY;
+    
+    // Вызов GPU бота с увеличенной глубиной
+    int gpu_depth = SIMULATION_DEPTH + 2;  // GPU может обрабатывать большую глубину
+    if (gpu_depth > 10) gpu_depth = 10;
+    
+    BotDecision decision = hip_bot_get_decision(&cpu_state, gpu_depth, currentHungerPenalty);
+    
+    // Конвертация направления GPU -> CPU
+    enum Direction gpu_to_cpu_dir[] = {UP, DOWN, LEFT, RIGHT};
+    if (decision.direction >= 0 && decision.direction < 4) {
+        pendingDir = gpu_to_cpu_dir[decision.direction];
+    }
+}
+#endif
+
 void botControl() {					/*	Вызывает функцию управления ботом	*/
+#ifdef USE_GPU
+    if (use_gpu_bot && gpu_bot_initialized) {
+        botControlGPU();
+    } else {
+        botControlWithSimulation();
+    }
+#else
     botControlWithSimulation();
+#endif
 }
 
 int calculateFreeSpace() {			/*	Вычисляет количество свободных клеток на поле	*/
@@ -823,6 +913,9 @@ void processInput(GLFWwindow* window) {				/*	Обрабатывает ввод 
     static int rKeyPressed = 0;
     static int eKeyPressed = 0;
     static int bKeyPressed = 0;
+#ifdef USE_GPU
+    static int gKeyPressed = 0;
+#endif
 
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, 1);
@@ -869,6 +962,20 @@ void processInput(GLFWwindow* window) {				/*	Обрабатывает ввод 
         else if (glfwGetKey(window, GLFW_KEY_B) == GLFW_RELEASE) {
             bKeyPressed = 0;
         }
+
+#ifdef USE_GPU
+        // Переключение GPU/CPU режима клавишей G
+        if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS && !gKeyPressed) {
+            if (gpu_bot_initialized) {
+                use_gpu_bot = !use_gpu_bot;
+                printf("Switched to %s bot\n", use_gpu_bot ? "GPU" : "CPU");
+            }
+            gKeyPressed = 1;
+        }
+        else if (glfwGetKey(window, GLFW_KEY_G) == GLFW_RELEASE) {
+            gKeyPressed = 0;
+        }
+#endif
 
         if (gameOver) {
             if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS && !rKeyPressed) {
@@ -1159,7 +1266,15 @@ void render() {						/*	Основная функция отрисовки те�
 
 
             if (botEnabled) {
+#ifdef USE_GPU
+                if (use_gpu_bot && gpu_bot_initialized) {
+                    renderText("Bot: GPU", WIDTH - 150, 30, 3.0f);
+                } else {
+                    renderText("Bot: CPU", WIDTH - 150, 30, 3.0f);
+                }
+#else
                 renderText("Bot: ON", WIDTH - 150, 30, 3.0f);
+#endif
                 if (panicMode) {
                     renderText("PANIC MODE", WIDTH - 200, 60, 3.0f);
                 }
@@ -1236,6 +1351,15 @@ int start_snake(void) {
     }
 
     glfwTerminate();
+    
+#ifdef USE_GPU
+    // Очистка GPU ресурсов
+    if (gpu_bot_initialized) {
+        hip_bot_cleanup();
+        printf("GPU Bot cleaned up\n");
+    }
+#endif
+    
     return 0;
 }
 	/* ---------------- *
